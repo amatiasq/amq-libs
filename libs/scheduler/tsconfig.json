@@ -1,0 +1,9 @@
+{
+  "include": ["."],
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/scheduler",
+    "rootDir": ".",
+    "baseUrl": "."
+  }
+}

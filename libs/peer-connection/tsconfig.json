@@ -1,0 +1,11 @@
+{
+  "include": ["."],
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../../dist/peer-connection",
+    "rootDir": ".",
+    "baseUrl": "."
+  },
+  "references": [{ "path": "../emitter" }]
+}

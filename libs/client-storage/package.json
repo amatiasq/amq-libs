@@ -1,0 +1,12 @@
+{
+  "name": "@amatiasq/client-storage",
+  "version": "0.1.0",
+  "author": "A. Matías Quezada <amatiasq@gmail.com>",
+  "license": "MIT",
+  "main": "./ClientStorage.js",
+  "types": "./ClientStorage.d.ts",
+  "scripts": {
+    "build": "tsc && npm run copy-files",
+    "copy-files": "cp package.json README.md ../../dist/client-storage"
+  }
+}

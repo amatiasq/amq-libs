@@ -1,0 +1,28 @@
+{
+  "name": "amatiasq-libs",
+  "repository": "https://github.com/amatiasq/amq-libs",
+  "private": true,
+  "workspaces": [
+    "libs/*"
+  ],
+  "scripts": {
+    "build": "run-p build:*",
+    "publish": "run-p publish:*",
+    "build:client-storage": "cd 'libs/client-storage' && npm run build",
+    "publish:client-storage": "npm run build:client-storage && cd 'dist/client-storage' && npm publish",
+    "build:emitter": "cd 'libs/emitter' && npm run build",
+    "publish:emitter": "npm run build:emitter && cd 'dist/emitter' && npm publish",
+    "build:json-socket": "cd 'libs/json-socket' && npm run build",
+    "publish:json-socket": "npm run build:json-socket && cd 'dist/json-socket' && npm publish",
+    "build:peer-connection": "cd 'libs/peer-connection' && npm run build",
+    "publish:peer-connection": "npm run build:peer-connection && cd 'dist/peer-connection' && npm publish",
+    "build:scheduler": "cd 'libs/scheduler' && npm run build",
+    "publish:scheduler": "npm run build:scheduler && cd 'dist/scheduler' && npm publish"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  }
+}

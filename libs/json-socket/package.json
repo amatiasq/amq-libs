@@ -1,0 +1,12 @@
+{
+  "name": "@amatiasq/json-socket",
+  "version": "0.1.0",
+  "author": "A. Matías Quezada <amatiasq@gmail.com>",
+  "license": "MIT",
+  "main": "./JsonSocket.js",
+  "types": "./JsonSocket.d.ts",
+  "scripts": {
+    "build": "tsc && npm run copy-files",
+    "copy-files": "cp package.json README.md ../../dist/json-socket"
+  }
+}
