@@ -1,6 +1,6 @@
 {
   "name": "@amatiasq/emitter",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
   "main": "./emitter.js",

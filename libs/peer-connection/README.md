@@ -38,7 +38,7 @@ const offer = await conn.createOffer({
 const answer = await sendToAliceSomehow(offer);
 
 // And pass the answer back to PeerConnection
-conn.receiveAnswer(answer);
+conn.acceptAnswer(answer);
 
 // DONE
 ```
@@ -62,7 +62,7 @@ const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: t
 conn.addStream(stream);
 
 // Generate an answer for the offer
-const answer = await conn.receiveOffer(offer, {
+const answer = await conn.acceptOffer(offer, {
   offerToReceiveAudio: true,
   offerToReceiveVideo: true,
 });

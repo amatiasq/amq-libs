@@ -1,6 +1,6 @@
 {
   "name": "@amatiasq/peer-connection",
-  "version": "1.0.1",
+  "version": "2.0.3",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
   "main": "./PeerConnection.js",
@@ -15,11 +15,8 @@
     "build-deps": "cd ../emitter && npm run build",
     "copy-files": "cp ../../.npmignore package.json README.md ../../dist/peer-connection"
   },
-  "peerDependencies": {
-    "freeice": "^2.2.2"
-  },
   "dependencies": {
     "freeice": "^2.2.2",
-    "@amatiasq/emitter": "^0.1.0"
+    "@amatiasq/emitter": "^1.0.3"
   }
 }

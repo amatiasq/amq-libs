@@ -1,6 +1,6 @@
 {
   "name": "@amatiasq/json-socket",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
   "main": "./JsonSocket.js",
@@ -16,6 +16,6 @@
     "copy-files": "cp ../../.npmignore package.json README.md ../../dist/json-socket"
   },
   "dependencies": {
-    "@amatiasq/emitter": "^0.1.0"
+    "@amatiasq/emitter": "^1.0.3"
   }
 }

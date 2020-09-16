@@ -15,7 +15,7 @@ export class PeerConnection {
     return this.rtc.localDescription!;
   }
 
-  async receiveOffer(
+  async acceptOffer(
     offer: RTCSessionDescription,
     options: RTCOfferOptions = {},
   ) {
@@ -23,7 +23,7 @@ export class PeerConnection {
     return this.createAnswer(options);
   }
 
-  receiveAnswer(answer: RTCSessionDescription) {
+  acceptAnswer(answer: RTCSessionDescription) {
     return this.setRemoteDescription(answer);
   }
 
