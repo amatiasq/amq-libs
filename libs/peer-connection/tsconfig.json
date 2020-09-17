@@ -1,11 +1,10 @@
 {
   "include": ["."],
+  "exclude": ["dist", "dist.es2015"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "outDir": "../../dist/peer-connection",
+    "outDir": "dist",
     "rootDir": ".",
     "baseUrl": "."
-  },
-  "references": [{ "path": "../emitter" }]
+  }
 }

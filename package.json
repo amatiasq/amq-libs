@@ -6,18 +6,19 @@
     "libs/*"
   ],
   "scripts": {
+    "clean": "rm -r libs/*/dist libs/*/dist.es2015",
     "build": "run-p build:*",
     "publish": "run-p publish:*",
-    "build:client-storage": "cd 'libs/client-storage' && npm run build",
-    "publish:client-storage": "npm run build:client-storage && cd 'dist/client-storage' && npm publish",
-    "build:emitter": "cd 'libs/emitter' && npm run build",
-    "publish:emitter": "npm run build:emitter && cd 'dist/emitter' && npm publish",
-    "build:json-socket": "cd 'libs/json-socket' && npm run build",
-    "publish:json-socket": "npm run build:json-socket && cd 'dist/json-socket' && npm publish",
-    "build:peer-connection": "cd 'libs/peer-connection' && npm run build",
-    "publish:peer-connection": "npm run build:peer-connection && cd 'dist/peer-connection' && npm publish",
-    "build:scheduler": "cd 'libs/scheduler' && npm run build",
-    "publish:scheduler": "npm run build:scheduler && cd 'dist/scheduler' && npm publish"
+    "build:client-storage": "./scripts/build.sh 'client-storage'",
+    "publish:client-storage": "./scripts/publish.sh 'client-storage'",
+    "build:emitter": "./scripts/build.sh 'emitter'",
+    "publish:emitter": "./scripts/publish.sh 'emitter'",
+    "build:json-socket": "./scripts/build.sh 'json-socket'",
+    "publish:json-socket": "./scripts/publish.sh 'json-socket'",
+    "build:peer-connection": "./scripts/build.sh 'peer-connection'",
+    "publish:peer-connection": "./scripts/publish.sh 'peer-connection'",
+    "build:scheduler": "./scripts/build.sh 'scheduler'",
+    "publish:scheduler": "./scripts/publish.sh 'scheduler'"
   },
   "devDependencies": {
     "jest": "^26.4.2",

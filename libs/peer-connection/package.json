@@ -1,19 +1,18 @@
 {
   "name": "@amatiasq/peer-connection",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
-  "main": "./PeerConnection.js",
-  "types": "./PeerConnection.d.ts",
+  "main": "./dist/PeerConnection.js",
+  "types": "./dist/PeerConnection.d.ts",
   "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/peer-connection",
   "repository": {
     "type": "git",
     "url": "https://github.com/amatiasq/amq-libs.git"
   },
   "scripts": {
-    "build": "npm run build-deps && tsc && npm run copy-files",
-    "build-deps": "cd ../emitter && npm run build",
-    "copy-files": "cp ../../.npmignore package.json README.md ../../dist/peer-connection"
+    "prebuild": "cd ../emitter && npm run build",
+    "build": "tsc"
   },
   "dependencies": {
     "freeice": "^2.2.2",

@@ -1,2 +1,4 @@
 tsconfig.tsbuildinfo
+tsconfig.es2015.json
 tsconfig.json
+.npmignore

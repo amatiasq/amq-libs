@@ -12,10 +12,8 @@ for (const [key, value] of Array.from(Object.entries(scripts))) {
 }
 
 for (const lib of readdirSync('./libs')) {
-  scripts[`build:${lib}`] = `cd 'libs/${lib}' && npm run build`;
-  scripts[
-    `publish:${lib}`
-  ] = `npm run build:${lib} && cd 'dist/${lib}' && npm publish`;
+  scripts[`build:${lib}`] = `./scripts/build.sh '${lib}'`;
+  scripts[`publish:${lib}`] = `./scripts/publish.sh '${lib}'`;
 }
 
 const content = JSON.stringify({ ...pkg, scripts }, null, 2);

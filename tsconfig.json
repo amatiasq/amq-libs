@@ -27,7 +27,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "paths": {
-      "@amatiasq/*": ["../../dist/*"]
+      "@amatiasq/*": ["../*"]
     }
   },
   "references": [

@@ -1,8 +1,9 @@
 {
   "include": ["."],
+  "exclude": ["dist", "dist.es2015"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/scheduler",
+    "outDir": "dist",
     "rootDir": ".",
     "baseUrl": "."
   }

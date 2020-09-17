@@ -1,10 +1,10 @@
 {
   "include": ["."],
+  "exclude": ["dist", "dist.es2015"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/json-socket",
+    "outDir": "dist",
     "rootDir": ".",
     "baseUrl": "."
-  },
-  "references": [{ "path": "../emitter" }]
+  }
 }

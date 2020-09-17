@@ -1,17 +1,16 @@
 {
   "name": "@amatiasq/scheduler",
-  "version": "1.0.1",
+  "version": "3.0.0",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
-  "main": "./Scheduler.js",
-  "types": "./Scheduler.d.ts",
+  "main": "./dist/Scheduler.js",
+  "types": "./dist/Scheduler.d.ts",
   "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/scheduler",
   "repository": {
     "type": "git",
     "url": "https://github.com/amatiasq/amq-libs.git"
   },
   "scripts": {
-    "build": "tsc && npm run copy-files",
-    "copy-files": "cp ../../.npmignore package.json README.md ../../dist/scheduler"
+    "build": "tsc"
   }
 }
