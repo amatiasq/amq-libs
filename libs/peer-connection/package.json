@@ -1,6 +1,6 @@
 {
   "name": "@amatiasq/peer-connection",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
   "main": "./dist/PeerConnection.js",
@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "freeice": "^2.2.2",
-    "@amatiasq/emitter": "^1.0.3"
+    "@amatiasq/emitter": "^2.0.0"
   }
 }

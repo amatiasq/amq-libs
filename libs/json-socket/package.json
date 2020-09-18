@@ -1,6 +1,6 @@
 {
   "name": "@amatiasq/json-socket",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
   "types": "./dist/JsonSocket.d.ts",
@@ -16,6 +16,6 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@amatiasq/emitter": "^1.1.0"
+    "@amatiasq/emitter": "^2.0.0"
   }
 }

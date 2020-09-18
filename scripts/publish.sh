@@ -11,10 +11,18 @@ fi
 
 ./scripts/build.sh "$libName"
 
-cp shared/.npmignore "$path"
+cp ./shared/.npmignore "$path"
 
+echo "$path"
 cd "$path"
-npm publish "$2"
+
+echo "Publishing..."
+if [ -z "$2" ]
+then
+  npm publish
+else
+  npm publish "$2"
+fi
 
 rm .npmignore
 rm -r dist dist.es2015
