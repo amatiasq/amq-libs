@@ -1,0 +1,16 @@
+{
+  "name": "@amatiasq/keyboard",
+  "version": "0.1.0",
+  "author": "A. Matías Quezada <amatiasq@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/KeyboardController.js",
+  "types": "./dist/KeyboardController.d.ts",
+  "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/keyboard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amatiasq/amq-libs.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
