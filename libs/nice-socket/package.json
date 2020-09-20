@@ -1,0 +1,21 @@
+{
+  "name": "@amatiasq/nice-socket",
+  "version": "0.1.2",
+  "author": "A. Matías Quezada <amatiasq@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/NiceSocketServer.js",
+  "types": "./dist/NiceSocketServer.d.ts",
+  "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/nice-socket",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amatiasq/amq-libs.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "ws": "^7.3.1",
+    "@types/ws": "^7.2.6"
+  },
+  "devDependencies": {}
+}

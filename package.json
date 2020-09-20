@@ -17,6 +17,8 @@
     "publish:json-socket": "./scripts/publish.sh 'json-socket'",
     "build:keyboard": "./scripts/build.sh 'keyboard'",
     "publish:keyboard": "./scripts/publish.sh 'keyboard'",
+    "build:nice-socket": "./scripts/build.sh 'nice-socket'",
+    "publish:nice-socket": "./scripts/publish.sh 'nice-socket'",
     "build:peer-connection": "./scripts/build.sh 'peer-connection'",
     "publish:peer-connection": "./scripts/publish.sh 'peer-connection'",
     "build:scheduler": "./scripts/build.sh 'scheduler'",
@@ -27,5 +29,8 @@
     "npm-run-all": "^4.1.5",
     "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@types/ws": "^7.2.6"
   }
 }

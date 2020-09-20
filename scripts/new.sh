@@ -18,7 +18,7 @@ path="libs/$name"
 
 mkdir "$path"
 
-cat ./template/template-package.json \
+cat ./template/package.json \
   | sed "s/libraryname/$name/" \
   | sed "s/PascalCase/$pascal/" \
   > "$path/package.json"
