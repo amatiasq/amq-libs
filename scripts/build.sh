@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 libName="$1"
 path="libs/$libName"

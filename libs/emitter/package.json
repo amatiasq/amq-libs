@@ -1,11 +1,11 @@
 {
   "name": "@amatiasq/emitter",
-  "version": "2.0.0",
+  "version": "4.0.1",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
-  "types": "./dist/emitter.d.ts",
-  "main": "./dist/emitter.js",
-  "module": "./dist.es2015/emitter.js",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist.es2015/index.js",
   "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/emitter",
   "repository": {
     "type": "git",

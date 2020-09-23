@@ -1,17 +1,28 @@
+import { emitter, emitterWithChannels } from '@amatiasq/emitter';
+
 import { KeyCode } from './KeyCode';
+import { KeyCodeEvent } from './KeyCodeEvent';
 
-export { KeyCode };
-
-type EnumDeclaration = number | string;
 type Native = (event: KeyboardEvent) => void;
-type ExtendedKeyboardEvent = KeyboardEvent & { code: KeyCode };
 
-export class KeyboardController<T extends EnumDeclaration> {
-  private readonly keymap: { [id: string]: T } = {};
-  private readonly actions = new Set<T>();
+export class KeyboardController {
+  private readonly pressed = new Set<KeyCode>();
   private readonly codeToKey = new Map<KeyCode, string>();
-  private readonly onKeyDownListeners = new Map<KeyCode, Native[]>();
-  private readonly onKeyUpListeners = new Map<KeyCode, Native[]>();
+
+  private readonly emitKeyCodeDown = emitterWithChannels<
+    KeyCode,
+    KeyCodeEvent
+  >();
+  private readonly emitKeyCodeUp = emitterWithChannels<KeyCode, KeyCodeEvent>();
+  private readonly emitKeyDown = emitter<KeyCodeEvent>();
+  private readonly emitKeyUp = emitter<KeyCodeEvent>();
+
+  readonly onKeyCodeDown = this.emitKeyCodeDown.subscribe;
+  readonly onKeyCodeUp = this.emitKeyCodeUp.subscribe;
+  readonly onKeyDown = this.emitKeyDown.subscribe;
+  readonly onKeyUp = this.emitKeyUp.subscribe;
+
+  isPaused = false;
 
   constructor() {
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -21,106 +32,62 @@ export class KeyboardController<T extends EnumDeclaration> {
     document.addEventListener('keyup', this.handleKeyUp as Native);
   }
 
-  onKeyDown(code: KeyCode, listener: Native) {
-    addListener(this.onKeyDownListeners, code, listener);
+  pause() {
+    this.isPaused = true;
   }
 
-  onKeyUp(code: KeyCode, listener: Native) {
-    addListener(this.onKeyUpListeners, code, listener);
+  resume() {
+    this.isPaused = false;
   }
 
-  setKeyMap(key: KeyCode, action: T) {
-    this.keymap[key] = action;
-  }
-
-  isActive(action: T) {
-    return this.actions.has(action);
+  isPressed(key: KeyCode) {
+    return this.pressed.has(key);
   }
 
   getUserKey(code: KeyCode) {
     return this.codeToKey.has(code) ? this.codeToKey.get(code) : null;
   }
 
-  /*
-   * Helpers
-   */
-
-  setDirections(up: T, down: T, left: T, right: T) {
-    this.setArrows(up, down, left, right);
-    this.setWSAD(up, down, left, right);
+  dispose() {
+    document.removeEventListener('keydown', this.handleKeyDown as Native);
+    document.removeEventListener('keyup', this.handleKeyUp as Native);
   }
 
-  setArrows(up: T, down: T, left: T, right: T) {
-    this.keymap[KeyCode.ArrowUp] = up;
-    this.keymap[KeyCode.ArrowDown] = down;
-    this.keymap[KeyCode.ArrowLeft] = left;
-    this.keymap[KeyCode.ArrowRight] = right;
-  }
-
-  setWSAD(up: T, down: T, left: T, right: T) {
-    this.keymap[KeyCode.KeyW] = up;
-    this.keymap[KeyCode.KeyS] = down;
-    this.keymap[KeyCode.KeyA] = left;
-    this.keymap[KeyCode.KeyD] = right;
-  }
-
-  /*
-   * Internals
-   */
-
-  private handleKeyDown(event: ExtendedKeyboardEvent) {
+  private handleKeyDown(event: KeyCodeEvent) {
     this.onEvent(event);
-    const action = this.getActionFor(event.code);
 
-    if (action != null) {
-      this.actions.add(action);
+    if (this.isPressed(event.code)) {
+      return;
     }
 
-    triggerListeners(event, this.onKeyDownListeners);
-  }
+    this.pressed.add(event.code);
 
-  private handleKeyUp(event: ExtendedKeyboardEvent) {
-    const action = this.getActionFor(event.code);
-
-    if (action != null) {
-      this.actions.delete(action);
+    if (this.isPaused) {
+      return;
     }
 
-    triggerListeners(event, this.onKeyUpListeners);
+    this.emitKeyDown(event);
+    this.emitKeyCodeDown(event.code, event);
   }
 
-  private getActionFor(code: KeyCode) {
-    if (!KeyCode[code]) {
-      console.log(`Missing key code: ${code}`);
+  private handleKeyUp(event: KeyCodeEvent) {
+    this.onEvent(event);
+
+    if (!this.isPressed(event.code)) {
+      return;
     }
 
-    return this.keymap[code];
+    this.pressed.delete(event.code);
+
+    if (this.isPaused) {
+      return;
+    }
+
+    this.emitKeyUp(event);
+    this.emitKeyCodeUp(event.code, event);
   }
 
-  private onEvent(event: ExtendedKeyboardEvent) {
+  private onEvent(event: KeyCodeEvent) {
     this.codeToKey.set(event.code, event.key);
-  }
-}
-
-function addListener(
-  list: Map<KeyCode, Native[]>,
-  code: KeyCode,
-  listener: Native,
-) {
-  if (list.has(code)) {
-    list.get(code)!.push(listener);
-  } else {
-    list.set(code, [listener]);
-  }
-}
-
-function triggerListeners(
-  event: ExtendedKeyboardEvent,
-  list: Map<KeyCode, Native[]>,
-) {
-  const listeners = list.get(event.code);
-
-  if (listeners) {
-    listeners.forEach(x => x(event));
   }
 }

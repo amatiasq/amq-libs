@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "author": "A. Matías Quezada <amatiasq@gmail.com>",
   "license": "MIT",
-  "main": "./dist/PascalCase.js",
   "types": "./dist/PascalCase.d.ts",
+  "main": "./dist/PascalCase.js",
+  "module": "./dist.es2015/PascalCase.js",
   "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/libraryname",
   "repository": {
     "type": "git",
