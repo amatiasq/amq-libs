@@ -39,6 +39,13 @@ Install with \`npm i --save @amatiasq/$name\`.
 \`\`\`js
 import { $pascal } from '@amatiasq/$name';" > "$path/README.md"
 
+node -e "
+const { readFileSync, writeFileSync } = require('fs');
+const config = JSON.parse(readFileSync('./tsconfig.json').toString());
+config.references.push({ 'path': 'libs/$name' })
+writeFileSync('./tsconfig.json', JSON.stringify(config, null, 2));
+"
+
 cat "libs/$name/package.json"
 
 ./scripts/update-package-json.js

@@ -12,6 +12,7 @@ for (const [key, value] of Array.from(Object.entries(scripts))) {
 }
 
 for (const lib of readdirSync('./libs')) {
+  scripts[`link:${lib}`] = `cd 'libs/${lib}' && npm link`;
   scripts[`build:${lib}`] = `./scripts/build.sh '${lib}'`;
   scripts[`publish:${lib}`] = `./scripts/publish.sh '${lib}'`;
 }
