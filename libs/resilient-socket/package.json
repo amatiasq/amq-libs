@@ -1,0 +1,17 @@
+{
+  "name": "@amatiasq/resilient-socket",
+  "version": "0.1.2",
+  "author": "A. Matías Quezada <amatiasq@gmail.com>",
+  "license": "MIT",
+  "types": "./dist/ResilientSocket.d.ts",
+  "main": "./dist/ResilientSocket.js",
+  "module": "./dist.es2015/ResilientSocket.js",
+  "homepage": "https://github.com/amatiasq/amq-libs/tree/master/libs/resilient-socket",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amatiasq/amq-libs.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
