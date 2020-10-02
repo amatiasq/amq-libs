@@ -5,6 +5,7 @@ export function emitter<T = any>() {
 
   function emit(data: T) {
     listeners.forEach(listener => listener(data));
+    return Boolean(listeners.size);
   }
 
   function subscribe(listener: (data: T) => void) {

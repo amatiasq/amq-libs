@@ -6,15 +6,18 @@ export function emitterWithChannels<U = string, T = any>() {
   function emit(channel: U, data: T) {
     const listeners = channels.get(channel);
 
-    if (listeners) {
-      listeners.forEach(listener => listener(data));
+    if (!listeners) {
+      return false;
     }
+
+    listeners.forEach(listener => listener(data));
+    return Boolean(listeners.size);
   }
 
   function subscribe(channel: U, listener: (data: T) => void) {
     const listeners = channels.get(channel) || new Set<(data: T) => void>();
 
-    if (!listener.length) {
+    if (!listeners.size) {
       channels.set(channel, listeners);
     }
 
