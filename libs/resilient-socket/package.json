@@ -12,6 +12,10 @@
     "url": "https://github.com/amatiasq/amq-libs.git"
   },
   "scripts": {
+    "prebuild": "cd ../emitter && npm run build",
     "build": "tsc"
+  },
+  "dependencies": {
+    "@amatiasq/emitter": "^4.1.1"
   }
 }

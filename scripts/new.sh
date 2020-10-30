@@ -5,7 +5,7 @@ pascal="$2"
 
 if [ -z "$name" ]
 then
-  echo "Usage $0 <library name> <PascalName"
+  echo "Usage $0 <library name> <PascalName>"
   exit 1
 fi
 

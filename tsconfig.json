@@ -54,6 +54,9 @@
     },
     {
       "path": "libs/resilient-socket"
+    },
+    {
+      "path": "libs/socket"
     }
   ]
 }
