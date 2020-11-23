@@ -52,3 +52,12 @@ true
 > const unsafe = dom`<div>${{ __html__: '<i></i>' }}</div>`;
 <div><i></i></div>
 ```
+
+### Lists
+
+An array of valid values is also accepted. Values are joint with a space.
+
+```js
+> dom`<div class="${['active', 'selected']}">${['<random>']}</div>`
+<div class="active selected">&lt;random&gt;</div>
+```

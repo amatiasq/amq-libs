@@ -6,6 +6,7 @@ type Param =
   | boolean
   | HTMLElement
   | DocumentFragment
+  | Param[]
   | { __html__: string };
 
 const temporalMap = new Map<string, HTMLElement | DocumentFragment>();
@@ -46,7 +47,7 @@ export function escapeHtml(unsafe: string) {
     .replace(/  +/g, x => '&nbsp;'.repeat(x.length));
 }
 
-function cleanParam(param: Param) {
+function cleanParam(param: Param): string {
   if (param == null) return '';
 
   if (typeof param === 'string') {
@@ -55,6 +56,10 @@ function cleanParam(param: Param) {
 
   if (typeof param === 'number' || typeof param === 'boolean') {
     return String(param);
+  }
+
+  if (Array.isArray(param)) {
+    return param.map(cleanParam).join(' ');
   }
 
   if (param instanceof HTMLElement || param instanceof DocumentFragment) {
