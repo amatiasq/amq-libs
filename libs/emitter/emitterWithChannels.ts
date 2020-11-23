@@ -10,7 +10,9 @@ export function emitterWithChannels<U = string, T = any>() {
       return false;
     }
 
-    listeners.forEach(listener => listener(data));
+    // Copied to prevent modifications while it runs
+    const copy = Array.from(listeners);
+    copy.forEach(listener => listener(data));
     return Boolean(listeners.size);
   }
 
