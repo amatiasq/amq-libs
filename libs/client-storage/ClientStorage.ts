@@ -98,7 +98,14 @@ export class ClientStorage<T = any> {
 }
 
 function deepClone<T>(target: T): T {
-  return typeof target === 'object'
-    ? JSON.parse(JSON.stringify(target))
-    : target;
+	if (typeof target !== 'object') {
+		return target;
+	}
+
+	if ('structuredClone' in window) {
+		return (window as any).structuredClone(target);
+	}
+
+	return JSON.parse(JSON.stringify(target));
 }
+
